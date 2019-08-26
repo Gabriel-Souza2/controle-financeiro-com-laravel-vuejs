@@ -26,9 +26,9 @@ class AuthController extends Controller
 
         $token = JWTAuth::attempt($credentials);
 
-        return $token ?? response()->json([
+        return $token ? ['token' => $token] : response()->json([
             'error' => Lang::get('auth.failed')
-        ], 400); 
+        ], 400);
     }
 
     public function me()

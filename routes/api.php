@@ -24,3 +24,10 @@ Route::namespace('Api\Auth')->prefix('auth')->group(function () {
     Route::post('me', 'AuthController@me');
 
 });
+
+Route::namespace('Api')->middleware('auth:api')->group(function(){
+    Route::apiResources([
+        'categories' => 'CategoryController',
+        'entries' => 'EntryController'
+    ]);
+});
