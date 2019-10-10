@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import CategoryFormComponent from '../forms/CategoryFormComponent'
+import CategoryFormComponent from '../../generics/forms/CategoryFormComponent'
 import TableComponent from '../../generics/TableComponent'
 import * as moment from 'moment'
 

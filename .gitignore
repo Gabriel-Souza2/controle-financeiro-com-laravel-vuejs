@@ -3,6 +3,7 @@
 /public/storage
 /storage/*.key
 /vendor
+/front/src/components/analytics
 .env
 .env.backup
 .phpunit.result.cache

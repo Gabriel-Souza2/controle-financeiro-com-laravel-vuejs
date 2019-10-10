@@ -3,12 +3,7 @@
     <div class="col-12">
       <q-card>
         <q-card-section class="text-h5 text-primary">
-          <q-toolbar>
-            <q-toolbar-title class="text-weight-bolder">
-              <q-icon name="account_balance_wallet"></q-icon> My Wallet
-            </q-toolbar-title>
-          </q-toolbar>
-          <q-separator class="q-mt-sm"></q-separator>
+          <HeaderComponent icon="account_balance_wallet" title="My Wallet"/>
         </q-card-section>
         <q-card-section>
           <div class="row q-my-lg">
@@ -31,7 +26,8 @@
 </template>
 
 <script>
-import ICountUp from 'vue-countup-v2';
+import ICountUp from 'vue-countup-v2'
+import HeaderComponent from '../generics/base/HeaderComponent'
 
 export default {
   data () {
@@ -61,9 +57,6 @@ export default {
       }
     }
   },
-  components: {
-    ICountUp
-  }, 
   computed: {
     costs(){
       return this.$store.getters['entries/costs']
@@ -92,6 +85,10 @@ export default {
       }
     }
   },
+  components: {
+    ICountUp,
+    HeaderComponent
+  }, 
 }
 </script>
 

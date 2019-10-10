@@ -1,15 +1,8 @@
 <template>
   <div>
     <q-card>
-      <q-card-section class="text-h5 text-primary">
-        <q-toolbar>
-          <q-toolbar-title class="text-weight-bolder">
-            <q-icon :name="icon"></q-icon>  {{title}}
-          </q-toolbar-title>
-          <q-btn flat dense round icon="add" @click="addButton()"></q-btn>
-          <q-btn flat dense round icon="remove" @click="remove()"></q-btn>
-        </q-toolbar>
-        <q-separator></q-separator>
+      <q-card-section>
+        <HeaderComponent :buttons="true" :icon="icon" :title="title" @add="add" @remove="destroy"/>
       </q-card-section>
       <q-card-section>
         <q-option-group v-if="checkboxes" v-model="filters"  :options="checkboxes" type="checkbox" inline/>        
@@ -27,6 +20,7 @@
 </template>
 
 <script>
+import HeaderComponent from './base/HeaderComponent'
 export default {
   props:['icon', 'title', 'columns', 'data', 'state'], 
   data () {
@@ -58,11 +52,11 @@ export default {
     }
   },
   methods: {
-    addButton()
+    add()
     {
       this.$emit('add', true)
     },
-    remove(){
+    destroy(){
       if(this.selected.length > 0){
         this.$store.dispatch(this.state + '/remove', this.selected).then(() => {
           this.selected = []
@@ -74,6 +68,9 @@ export default {
     filters(){
       this.$emit('filters', this.filters)
     }
+  },
+  components: {
+    HeaderComponent
   }
 }
 </script>

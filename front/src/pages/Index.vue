@@ -1,12 +1,8 @@
 <template>
-  <q-page class="bg-grey-2 flex">
-    <div class="fit q-mx-md">
-      <div class="q-mt-xl">
-        <money-component></money-component>
-      </div>
-      <div class="q-mt-xl">
-        <list-component ></list-component>
-      </div>
+  <q-page padding class="bg-grey-2">
+    <div class="fit">
+      <money-component></money-component>
+      <list-component ></list-component>
     </div>
   </q-page>
 </template>
@@ -16,7 +12,6 @@
 
 <script>
 import MoneyComponent from '../components/index/MoneyComponent'
-import ChartComponent from '../components/index/ChartComponent'
 import ListComponent from '../components/index/ListComponent'
 
 export default {
@@ -26,7 +21,6 @@ export default {
   },
   components: { 
     'money-component':MoneyComponent, 
-    'chart-component':ChartComponent, 
     'list-component': ListComponent 
   }
 

@@ -1,9 +1,9 @@
 <template>
   <div class="row">
-    <div class="col-12">
+    <div class="col-12 q-my-lg">
       <EntriesTableComponent></EntriesTableComponent>
     </div>
-    <div class="col-12 q-mt-xl">
+    <div class="col-12">
       <CategoriesTableComponent></CategoriesTableComponent>
     </div>
   </div>

@@ -31,6 +31,10 @@ export default function ({store}) {
      if(store.state.auth.check && to.name == 'login'){
        Router.push({name: 'home'})
      }
+
+     if(to.path == '/'){
+       Router.push({name: 'home'})
+     }
       next()
   })
 

@@ -1,12 +1,17 @@
 <template>
-  <q-page padding>
-    <!-- content -->
+  <q-page padding class="bg-grey-2 flex">
+    <div class="fit">
+      <ChartComponent/>
+    </div>
   </q-page>
 </template>
 
 <script>
+import ChartComponent from '../components/analytics/ChartComponent'
 export default {
-  // name: 'PageName',
+  components:{
+    ChartComponent
+  }
 }
 </script>
 
