@@ -1,10 +1,15 @@
 
 const routes = [
   {
-    path: '/',
+    path: '',
     component: () => import('layouts/Layout.vue'),
     children: [
-      {name: 'home', meta: {auth: true}, path: '', component: () => import('pages/Index.vue') }
+      {name: 'home', meta: {auth: true}, path: '/home', component: () => import('pages/Index.vue') },
+      {name: 'analytics', meta: {auth: true}, path: '/analytics', component: () => import('pages/Analytics.vue') },
+      {name: 'trash', meta: {auth: true}, path: '/trash', component: () => import('pages/Analytics.vue') },
+      {name: 'settings', meta: {auth: true}, path: '/settings', component: () => import('pages/Analytics.vue') },
+      {name: 'help', meta: {auth: true}, path: '/help', component: () => import('pages/Analytics.vue') },
+
     ]
   },
 

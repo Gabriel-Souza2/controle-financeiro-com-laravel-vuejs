@@ -20,6 +20,5 @@ $factory->define(Entry::class, function (Faker $faker) {
         'identify' => $faker->word,
         'value' => rand(1, 10000),
         'due_date' => Carbon::instance($due_date)->toDateString(),
-        'type' => rand(1,2) % 2 == 0 ? 'gains' : 'costs',
     ];
 });

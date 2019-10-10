@@ -19,8 +19,9 @@ class EntryResource extends JsonResource
             'identify' => $this->identify,
             'value' => $this->value,
             'due_date' => $this->due_date,
-            'type' => $this->type,
+            'created' => $this->created_at,
             'category' => $this->category->name,
+            'type' => $this->category->type
         ];
     }
 }

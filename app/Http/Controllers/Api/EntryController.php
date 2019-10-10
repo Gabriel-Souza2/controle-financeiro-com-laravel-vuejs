@@ -71,7 +71,7 @@ class EntryController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Entry  $entry
+     * 
      * @return \Illuminate\Http\Response
      */
     public function destroy(Entry $entry)
@@ -83,5 +83,11 @@ class EntryController extends Controller
         }
 
         return response()->json(['message' => 'unauthorized'], 401);
+    }
+
+    public function destroyMany(Request $ids)
+    {
+        Entry::destroy($ids->all());
+        return response()->json(null, 204);
     }
 }

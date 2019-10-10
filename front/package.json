@@ -12,9 +12,14 @@
   "dependencies": {
     "@quasar/extras": "^1.0.0",
     "axios": "^0.18.1",
+    "chart.js": "^2.8.0",
+    "chartjs-plugin-datalabels": "^0.7.0",
     "cors": "^2.8.5",
+    "countup.js": "^2.0.4",
+    "moment": "^2.24.0",
     "qs": "^6.8.0",
-    "quasar": "^1.0.0"
+    "quasar": "^1.0.0",
+    "vue-countup-v2": "^4.0.0"
   },
   "devDependencies": {
     "@quasar/app": "^1.0.0"

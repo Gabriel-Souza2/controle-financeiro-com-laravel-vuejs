@@ -40,6 +40,18 @@ class EntryTest extends TestCase
         return $entry;
     }
 
+    private function createEntries($qtd = 10)
+    {
+        $category = $this->user->categories()->save(factory(Category::class)->make());
+        
+        $entries = factory(Entry::class, $qtd)->create([
+            'user_id' => $this->user->id,
+            'category_id' => $category->id
+        ]);
+
+        return $entries;
+    }
+
     public function test_create_entry()
     {
         $data = $this->getEntryData();
@@ -85,14 +97,28 @@ class EntryTest extends TestCase
             ->assertStatus(204);
     }
 
+    public function test_delete_many_entries()
+    {
+       $entries = $this->createEntries(3);
+
+       $ids = array_map(function($entry){
+           return $entry['id'];
+       }, $entries->toArray());
+       
+       $response = $this->actingAs($this->user, 'api')
+            ->json('DELETE', route('entries.delete_many'), $ids)
+            ->assertStatus(204);
+
+        array_map(function($entry){
+            $this->assertDatabaseMissing('entries', $entry);            
+        }, $entries->toArray());
+    }
+
     public function test_list_entry()
     {
         $category = $this->user->categories()->save(factory(Category::class)->make());
         
-        $entries = factory(Entry::class, 10)->create([
-            'user_id' => $this->user->id,
-            'category_id' => $category->id
-        ]);
+        $entries = $this->createEntries(10);
         
         $entriesResource = EntryResource::collection($entries);
         

@@ -18,7 +18,6 @@ class CreateEntriesTable extends Migration
             $table->string('identify');
             $table->decimal('value');
             $table->date('due_date');
-            $table->enum('type', ['gains', 'costs']);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->unsignedBigInteger('category_id');

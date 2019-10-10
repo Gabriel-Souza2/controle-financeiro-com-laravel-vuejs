@@ -13,7 +13,7 @@ class CategoriesAndEntriesTablesSeeder extends Seeder
      */
     public function run()
     {
-        factory(Category::class, 5)->create()->each(function ($category) {
+        factory(Category::class, 5)->create(['user_id' => 1])->each(function ($category) {
             $category->entries()->createMany(
                 factory(Entry::class, 5)->make(['user_id' => 1])->toArray()
             );

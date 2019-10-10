@@ -18,6 +18,7 @@
         <q-card-section>
           <q-form
             @reset="reset"
+            @submit="login"
           >
             <q-input
               filled
@@ -25,6 +26,7 @@
               type="email"
               label="Email"
               lazy-rules
+              ref="email"
               :rules="[val =>  !!val || 'Digite seu email']"
             />
             <q-input
@@ -36,7 +38,7 @@
               :rules="[val =>  !!val || 'Digite sua senha']"
             />
             <div>
-              <q-btn label="Login" :loading="loading" type="submit" @click="login" color="primary" class="q-mr-sm"/>
+              <q-btn label="Login" :loading="loading" type="submit" color="primary" class="q-mr-sm"/>
               <q-btn label="Reset" type="reset" color="primary" class="q-ml-sm"/>
             </div>
           </q-form>

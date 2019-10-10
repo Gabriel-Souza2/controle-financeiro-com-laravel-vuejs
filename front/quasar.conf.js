@@ -8,7 +8,7 @@ module.exports = function (ctx) {
     boot: [
       'axios'
     ],
-
+    
     css: [
       'app.styl'
     ],
@@ -52,16 +52,30 @@ module.exports = function (ctx) {
         'QCardActions',
         'QBtn',
         'QBanner',
-        'QSpace'
+        'QSpace',
+        'QTable',
+        'QCheckbox',
+        'QRadio',
+        'QOptionGroup',
+        'QScrollArea',
+        'QSeparator',
+        'QSpace',
+        'QDialog',
+        'QDate',
+        'QPopupProxy',
+        'QSelect',
+        'QOptionGroup'
       ],
 
       directives: [
-        'Ripple'
+        'Ripple',
+        'ClosePopup'
       ],
 
       // Quasar plugins
       plugins: [
-        'Notify'
+        'Notify',
+        'Loading'
       ]
     },
 

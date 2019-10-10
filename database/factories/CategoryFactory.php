@@ -8,6 +8,6 @@ use Faker\Generator as Faker;
 $factory->define(Category::class, function (Faker $faker) {
     return [
         'name' => $faker->word,
-        'user_id' => 1
+        'type' => rand(1,2) % 2 == 0 ? 'gains' : 'costs',
     ];
 });

@@ -34,7 +34,6 @@ class EntryRequest extends FormRequest
         return [
             'identify' => 'required|max:255',
             'value' => 'required',
-            'type' => 'in:gains,costs',
             'due_date' => 'required|date|after_or_equal:yesterday',
             'category_id' => [
                 'required',

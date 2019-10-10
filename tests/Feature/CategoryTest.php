@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\User;
 use Tests\TestCase;
+use App\Models\Entry;
 use App\Models\Category;
 use App\Http\Resources\CategoryResource;
 use Illuminate\Foundation\Testing\WithFaker;
@@ -19,10 +20,8 @@ class CategoryTest extends TestCase
 
     public function test_create_category()
     {
-        $data = [
-            'name' => $this->faker->word
-        ];
-        
+        $data = factory(category::class)->make()->toArray();
+
         $this->actingAs($this->user, 'api')
             ->json('POST', route('categories.store'), $data)
             ->assertStatus(201)
@@ -33,9 +32,7 @@ class CategoryTest extends TestCase
     {
         $category = $this->category_factory();
 
-        $data = [
-            'name' => 'category update'
-        ];
+        $data = factory(category::class)->make()->toArray();
         
         $this->actingAs($this->user, 'api')
             ->json('PUT', route('categories.update', $category->id), $data)
@@ -58,11 +55,27 @@ class CategoryTest extends TestCase
 
         $resouce = CategoryResource::collection($categories);
 
-        $this->actingAs($this->user, 'api')
+        $response = $this->actingAs($this->user, 'api')
             ->json('GET', route('categories.index'))
             ->assertStatus(200)
             ->assertResource($resouce);
+    }
 
+    public function test_delete_many_categories()
+    {
+        $categories = factory(Category::class, 3)->create(['user_id' => $this->user->id])->toArray();
+
+        $ids = array_map(function($category){
+            return $category['id'];
+        }, $categories);
+
+        $this->actingAs($this->user, 'api')
+            ->json('DELETE', route('categories.delete_many'), $ids)
+            ->assertStatus(204);
+        
+        array_map(function($category){
+            $this->assertDatabaseMissing('categories', $category);
+        }, $categories);
     }
 
     public function test_user_try_delete_category_its_not_your(){

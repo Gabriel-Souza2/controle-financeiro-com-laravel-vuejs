@@ -45,7 +45,7 @@ class CategoryController extends Controller
      */
     public function show(Category $category)
     {
-        //
+        // 
     }
 
     /**
@@ -81,5 +81,11 @@ class CategoryController extends Controller
         }
 
         return response()->json(['message' => 'unauthorized'], 401);
+    }
+
+    public function destroyMany(Request $ids)
+    {
+        Category::destroy($ids->all());
+        return response()->json(null, 204);
     }
 }

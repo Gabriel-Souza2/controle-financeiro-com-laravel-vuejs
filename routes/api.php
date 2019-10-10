@@ -27,8 +27,11 @@ Route::namespace('Api\Auth')->prefix('auth')->group(function () {
 });
 
 Route::namespace('Api')->middleware('auth:api')->group(function(){
+    Route::delete('/entries/delete/many', 'EntryController@destroyMany')->name('entries.delete_many');
+    Route::delete('/categories/delete/many', 'CategoryController@destroyMany')->name('categories.delete_many');
     Route::apiResources([
         'categories' => 'CategoryController',
         'entries' => 'EntryController'
     ]);
+
 });
