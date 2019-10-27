@@ -8,7 +8,7 @@ module.exports = function (ctx) {
     boot: [
       'axios'
     ],
-    
+
     css: [
       'app.styl'
     ],
@@ -69,7 +69,8 @@ module.exports = function (ctx) {
 
       directives: [
         'Ripple',
-        'ClosePopup'
+        'ClosePopup',
+        'TouchSwipe'
       ],
 
       // Quasar plugins
@@ -83,13 +84,14 @@ module.exports = function (ctx) {
 
     build: {
       env: ctx.dev ?
-      { 
-        API: JSON.stringify('http://localhost:8000.com/api') 
+      {
+        API: JSON.stringify('http://localhost:8000.com/api')
       } : {
-        API: JSON.stringify('') 
+        API: JSON.stringify('')
       },
       scopeHoisting: true,
       vueRouterMode: 'history',
+      devtool: 'source-map',
       // vueCompiler: true,
       // gzip: true,
       // analyze: true,

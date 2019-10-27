@@ -1,93 +1,89 @@
 <template>
   <div>
     <EntryForm :show="form" v-on:close-dialog="form = false"></EntryForm>
-    <TableComponent 
-      icon="credit_card" 
-      title="My Entries" 
-      :columns="columns" 
+    <TableComponent
+      icon="credit_card"
+      title="My Entries"
+      :columns="columns"
       :data="entries"
       state="entries"
       @filters="applyFilters"
       @add="form = true"
-    >
-    </TableComponent>
+    ></TableComponent>
   </div>
 </template>
 
 <script>
-import EntryForm from '../../generics/forms/EntryFormComponent'
-import TableComponent from '../../generics/TableComponent'
-import * as moment from 'moment'
+import EntryForm from "../../generics/forms/EntryFormComponent";
+import TableComponent from "../../generics/TableComponent";
+import * as moment from "moment";
 
 export default {
-  data () {
+  data() {
     return {
-      filters: ['actives', 'gains', 'costs'],
+      filters: ["actives", "gains", "costs"],
       form: false,
       columns: [
         {
-          name: 'identify', 
-          label:'Identificação', 
-          align: 'left', 
-          field: 'identify'
+          name: "identify",
+          label: "Identificação",
+          align: "left",
+          field: "identify"
         },
         {
-          name: 'value', 
-          label:'Valor', 
-          align: 'left', 
-          field: 'value', 
+          name: "value",
+          label: "Valor",
+          align: "left",
+          field: "value",
           sortable: true
         },
         {
-          name: 'type', 
-          label:'Tipo', 
-          align: 'left', 
-          field: 'type', 
-          format: val => val == 'costs' ? 'Gastos' : 'Ganhos'
+          name: "type",
+          label: "Tipo",
+          align: "left",
+          field: "type",
+          format: val => (val == "costs" ? "Gastos" : "Ganhos")
         },
         {
-          name: 'created', 
-          label:'Criado', 
-          align: 'left', 
-          field: 'created', 
-          format: val => moment(val).format('DD/MM/YYYY'),  
+          name: "created",
+          label: "Criado",
+          align: "left",
+          field: "created",
+          format: val => moment(val).format("DD/MM/YYYY"),
           sortable: true
         },
         {
-          name: 'due_date', 
-          label:'Vencimento', 
-          align: 'left', 
-          field: 'due_date', 
-          format: val => moment(val).format('DD/MM/YYYY'), 
+          name: "due_date",
+          label: "Vencimento",
+          align: "left",
+          field: "due_date",
+          format: val => moment(val).format("DD/MM/YYYY"),
           sortable: true
         },
         {
-          name: 'category', 
-          label:'Categoria', 
-          align: 'left', 
-          field: 'category'
-        },
-      ],
-    }
+          name: "category",
+          label: "Categoria",
+          align: "left",
+          field: "category"
+        }
+      ]
+    };
   },
-  methods:{
-    applyFilters($value){
-      this.filters  = $value
+  methods: {
+    applyFilters($value) {
+      this.filters = $value;
     }
   },
   computed: {
-    entries(){
-      return this.$store.getters['entries/filtered'](this.filters)
+    entries() {
+      return this.$store.getters["entries/filtered"](this.filters);
     }
   },
   components: {
     EntryForm,
     TableComponent
-  },
-}
-
+  }
+};
 </script>
 
-<style lang="stylus">
-
-</style>
+<style lang="stylus"></style>

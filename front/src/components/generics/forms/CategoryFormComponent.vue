@@ -9,7 +9,7 @@
         <q-input
           class="q-mb-md"
           :rules="[
-            val => !!val || 'O nome é obrigatoria!'  
+            val => !!val || 'O nome é obrigatoria!'
           ]"
           ref="name"
           v-model="data.name"
@@ -27,13 +27,13 @@
 </template>
 
 <script>
-import formMixins from '../../../mixins/form'
+import formMixins from "../../../mixins/form";
 
 export default {
   mixins: [formMixins],
   data() {
     return {
-      state: 'categories',
+      state: "categories",
       options: [
         {
           label: "Ganhos",

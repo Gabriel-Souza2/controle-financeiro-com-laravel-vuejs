@@ -10,18 +10,15 @@
 </template>
 
 <script>
-import EntriesTableComponent from './List/EntriesTableComponent'
-import CategoriesTableComponent from './List/CategoriesTableComponent'
+import EntriesTableComponent from "./List/EntriesTableComponent";
+import CategoriesTableComponent from "./List/CategoriesTableComponent";
 
 export default {
   components: {
     EntriesTableComponent,
     CategoriesTableComponent
-  },
-}
-
+  }
+};
 </script>
 
-<style lang="stylus">
-
-</style>
+<style lang="stylus"></style>

@@ -1,18 +1,18 @@
 <template>
   <q-page padding class="bg-grey-2 flex">
     <div class="fit">
-      <ChartComponent/>
+      <ChartComponent />
     </div>
   </q-page>
 </template>
 
 <script>
-import ChartComponent from '../components/analytics/ChartComponent'
+import ChartComponent from "../components/analytics/ChartComponent";
 export default {
-  components:{
+  components: {
     ChartComponent
   }
-}
+};
 </script>
 
 <style>
