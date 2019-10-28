@@ -1,8 +1,17 @@
 <template>
   <q-page padding class="bg-grey-2">
     <div class="fit">
-      <money-component></money-component>
-      <list-component></list-component>
+      <div class="row">
+        <div class="col-12">
+          <MoneyComponent/>
+        </div>
+      </div>
+      <div class="col-12 q-mt-md">
+        <EntriesTableComponent/>
+      </div>
+      <div class="col-12 q-mt-md">
+        <CategoriesTableComponent/>
+      </div>
     </div>
   </q-page>
 </template>
@@ -11,15 +20,17 @@
 
 <script>
 import MoneyComponent from "../components/index/MoneyComponent";
-import ListComponent from "../components/index/ListComponent";
+import EntriesTableComponent from "../components/index/EntriesTableComponent";
+import CategoriesTableComponent from "../components/index/CategoriesTableComponent";
 
 export default {
   data() {
     return {};
   },
   components: {
-    "money-component": MoneyComponent,
-    "list-component": ListComponent
+    MoneyComponent,
+    EntriesTableComponent,
+    CategoriesTableComponent
   }
 };
 </script>

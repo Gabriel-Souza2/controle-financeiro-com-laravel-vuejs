@@ -1,16 +1,20 @@
 <template>
   <q-page padding class="bg-grey-2 flex">
     <div class="fit">
-      <ChartComponent />
+      <div class="row">
+        <div class="col-12">
+          <LineChartComponent />
+        </div>
+      </div>
     </div>
   </q-page>
 </template>
 
 <script>
-import ChartComponent from "../components/analytics/ChartComponent";
+import LineChartComponent from "../components/analytics/LineChartComponent";
 export default {
   components: {
-    ChartComponent
+    LineChartComponent
   }
 };
 </script>

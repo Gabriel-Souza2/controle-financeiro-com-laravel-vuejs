@@ -26,7 +26,7 @@
 </template>
 
 <script>
-import HeaderComponent from "./base/HeaderComponent";
+import HeaderComponent from "../base/HeaderComponent";
 export default {
   props: ["icon", "title", "columns", "data", "state"],
   data() {

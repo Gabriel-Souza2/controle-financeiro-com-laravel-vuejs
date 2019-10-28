@@ -1,30 +1,22 @@
 <template>
-  <div class="row">
-    <div class="col-12">
-      <q-card>
-        <q-card-section class="text-h5 text-primary">
-          <HeaderComponent icon="account_balance_wallet" title="My Wallet" />
-        </q-card-section>
-        <q-card-section>
-          <div class="row q-my-lg">
-            <div
-              class="col-xs-12 col-md-4 col-sm-12"
-              v-for="(item, index) in moneyList"
-              :key="index"
-            >
-              <div class="money-container">
-                <div class="money-type text-h6">{{item.label}}</div>
-                <div class="money-value text-h4 text-weight-bolder">
-                  <span class="money-icon text-h5" :class="item.color">R$</span>
-                  <ICountUp :options="options" :endVal="calculations(item.value)" />
-                </div>
-              </div>
+  <q-card>
+    <q-card-section class="text-h5 text-primary">
+      <HeaderComponent icon="account_balance_wallet" title="My Wallet" />
+    </q-card-section>
+    <q-card-section>
+      <div class="row q-my-lg">
+        <div class="col-xs-12 col-md-4 col-sm-12" v-for="(item, index) in moneyList" :key="index">
+          <div class="money-container">
+            <div class="money-type text-h6">{{item.label}}</div>
+            <div class="money-value text-h4 text-weight-bolder">
+              <span class="money-icon text-h5" :class="item.color">R$</span>
+              <ICountUp :options="options" :endVal="calculations(item.value)" />
             </div>
           </div>
-        </q-card-section>
-      </q-card>
-    </div>
-  </div>
+        </div>
+      </div>
+    </q-card-section>
+  </q-card>
 </template>
 
 <script>

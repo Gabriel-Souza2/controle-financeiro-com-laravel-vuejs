@@ -35,7 +35,6 @@ const routes = [
       }
     ]
   },
-
   {
     path: "",
     component: () => import("layouts/LoginLayout.vue"),
@@ -47,6 +46,11 @@ const routes = [
         component: () => import("pages/Login.vue")
       }
     ]
+  },
+  {
+    path: "/error-500",
+    name: "error500",
+    component: () => import('pages/Error500')
   }
 ];
 

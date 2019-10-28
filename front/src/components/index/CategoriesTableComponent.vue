@@ -1,12 +1,12 @@
 <template>
   <div>
-    <EntryForm :show="form" v-on:close-dialog="form = false"></EntryForm>
+    <CategoryFormComponent :show="form" @close-dialog="form = false"></CategoryFormComponent>
     <TableComponent
-      icon="credit_card"
-      title="My Entries"
+      icon="list"
+      title="My Categories"
       :columns="columns"
-      :data="entries"
-      state="entries"
+      :data="categories"
+      state="categories"
       @filters="applyFilters"
       @add="form = true"
     ></TableComponent>
@@ -14,28 +14,21 @@
 </template>
 
 <script>
-import EntryForm from "../../generics/forms/EntryFormComponent";
-import TableComponent from "../../generics/TableComponent";
+import CategoryFormComponent from "../generics/forms/CategoryFormComponent";
+import TableComponent from "../generics/base/TableComponent";
 import * as moment from "moment";
 
 export default {
   data() {
     return {
-      filters: ["actives", "gains", "costs"],
+      filters: ["gains", "costs", "actives"],
       form: false,
       columns: [
         {
-          name: "identify",
-          label: "Identificação",
+          name: "name",
+          label: "Nome",
           align: "left",
-          field: "identify"
-        },
-        {
-          name: "value",
-          label: "Valor",
-          align: "left",
-          field: "value",
-          sortable: true
+          field: "name"
         },
         {
           name: "type",
@@ -53,18 +46,12 @@ export default {
           sortable: true
         },
         {
-          name: "due_date",
-          label: "Vencimento",
+          name: "total",
+          label: "total",
           align: "left",
-          field: "due_date",
-          format: val => moment(val).format("DD/MM/YYYY"),
+          field: "total",
+          format: val => parseFloat(val).toFixed(2),
           sortable: true
-        },
-        {
-          name: "category",
-          label: "Categoria",
-          align: "left",
-          field: "category"
         }
       ]
     };
@@ -75,12 +62,16 @@ export default {
     }
   },
   computed: {
-    entries() {
-      return this.$store.getters["entries/filtered"](this.filters);
+    categories() {
+      let entries = this.$store.getters["entries/filtered"](this.filters);
+      return this.$store.getters["categories/categoriasWithfilters"](
+        entries,
+        this.filters
+      );
     }
   },
   components: {
-    EntryForm,
+    CategoryFormComponent,
     TableComponent
   }
 };
