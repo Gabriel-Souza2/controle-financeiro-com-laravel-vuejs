@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "chart.js": "^2.8.0",
     "chartjs-plugin-datalabels": "^0.7.0",
     "cors": "^2.8.5",
